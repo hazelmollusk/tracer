@@ -1,0 +1,77 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "authentication": {
+    "secret": "47fb8525ff4b22755804512a1b29743c49776560678c5a76792ad51a31a9a03b09719ab0fd73b8fad18dbc9ffcefe2da4e2b578ed267f2b794953c8951abe14386d4ecade6bec4ea16337dd2e8d5620866764e8189797dfdee1d5674ed43aecaef3f19eb994a2377aa445e24fa49b03f7224c180cafb362caf269977808535da63c16ede8fe153ea6da30cd6c3b534c41a19b6a46d8e16fb1f75c19d46be51506e3250013cb44350f9344dfe0aadccda9146c141b3eb44b92a9d9b5e2a7c9b1ace2a4085ea8274497b27db6fda907190e9d14e0a170a1c21f2457b3a1e9889cf86254067cdbbb0ded57c3172e823ceb30283f7ba687abcb525d26b0762b515fd",
+    "strategies": [
+      "jwt"
+    ],
+    "path": "/authentication",
+    "service": "person",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "auth0": {
+      "clientID": "your auth0 client id",
+      "clientSecret": "your auth0 client secret",
+      "successRedirect": "/",
+      "domain": "mydomain.auth0.com",
+      "scopes": [
+        "profile"
+      ]
+    },
+    "google": {
+      "clientID": "your google client id",
+      "clientSecret": "your google client secret",
+      "successRedirect": "/",
+      "scope": [
+        "profile openid email"
+      ]
+    },
+    "facebook": {
+      "clientID": "your facebook client id",
+      "clientSecret": "your facebook client secret",
+      "successRedirect": "/",
+      "scope": [
+        "public_profile",
+        "email"
+      ],
+      "profileFields": [
+        "id",
+        "displayName",
+        "first_name",
+        "last_name",
+        "email",
+        "gender",
+        "profileUrl",
+        "birthday",
+        "picture",
+        "permissions"
+      ]
+    },
+    "github": {
+      "clientID": "your github client id",
+      "clientSecret": "your github client secret",
+      "successRedirect": "/"
+    },
+    "cookie": {
+      "enabled": true,
+      "name": "feathers-jwt",
+      "httpOnly": false,
+      "secure": false
+    }
+  },
+  "mongodb": "mongodb://localhost:27017/tracer"
+}
