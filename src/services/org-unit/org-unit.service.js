@@ -1,10 +1,10 @@
 // Initializes the `orgUnit` service on path `/org-unit`
 const createService = require('feathers-mongoose');
-const createModel = require('../../models/org-unit.model');
+const { ou } = require('../../models/org/ou.model');
 const hooks = require('./org-unit.hooks');
 
 module.exports = function (app) {
-  const Model = createModel(app);
+  const Model = ou(app);
   const paginate = app.get('paginate');
 
   const options = {

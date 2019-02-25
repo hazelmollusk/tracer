@@ -1,15 +1,15 @@
-// orgRole-model.js - A mongoose model
+// tag-model.js - A mongoose model
 // 
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
 module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
-  const orgRole = new Schema({
+  const tag = new Schema({
     text: { type: String, required: true }
   }, {
     timestamps: true
   });
 
-  return mongooseClient.model('orgRole', orgRole);
+  return mongooseClient.model('tag', tag);
 };

@@ -1,11 +1,10 @@
-// Initializes the `orgRole` service on path `/org-role`
+// Initializes the `tag` service on path `/tag`
 const createService = require('feathers-mongoose');
-const hooks = require('./org-role.hooks');
+const createModel = require('../../models/tag.model');
+const hooks = require('./tag.hooks');
 
 module.exports = function (app) {
-  const modelDir = app.get("modelDir");
-  const { role } = require(modelDir + '/org/role.model')
-  const Model = role(app);
+  const Model = createModel(app);
   const paginate = app.get('paginate');
 
   const options = {
@@ -14,10 +13,10 @@ module.exports = function (app) {
   };
 
   // Initialize our service with any options it requires
-  app.use('/org-role', createService(options));
+  app.use('/tag', createService(options));
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('org-role');
+  const service = app.service('tag');
 
   service.hooks(hooks);
 };

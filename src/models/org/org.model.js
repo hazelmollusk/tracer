@@ -2,14 +2,11 @@
 // 
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
+
+
 module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient');
-  const { Schema } = mongooseClient;
-  const org = new Schema({
-    text: { type: String, required: true }
-  }, {
-    timestamps: true
-  });
+  const { org } = require(org.schemas)(app);
 
   return mongooseClient.model('org', org);
 };
