@@ -1,9 +1,9 @@
 {
   "name": "artifact-tracer",
   "description": "artifact-tracer",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "",
-  "main": "src",
+  "main": "",
   "keywords": [
     "feathers"
   ],

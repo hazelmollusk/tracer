@@ -53,6 +53,7 @@ app.configure(services);
 // Set up event channels (see channels.js)
 app.configure(channels);
 
+// Include artifact-tracer
 app.configure(artifactTracer);
 
 // Configure a middleware for 404s and the error handler
