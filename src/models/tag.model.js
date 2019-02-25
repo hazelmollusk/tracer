@@ -5,6 +5,6 @@
 module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient');
 
-  const { tag } = require('./tag.schema')(app);
+  const { tag } = require('./tracer.schema')(app);
   return mongooseClient.model('tag', tag);
 };
