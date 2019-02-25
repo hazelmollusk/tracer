@@ -3,20 +3,19 @@ module.exports = function(app) {
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
 
-  const tagTypeSchema = new Schema({
+  const tagType = new Schema({
     text: { type: String, required: true }
   }, {
     timestamps: true
   });
   
-  const tagSchema = new Schema({
-    tagType: [ tagTypeSchema ],
+  const tag = new Schema({
+    tagType: [ tagType ],
   }, {
     timestamps: true
   });
 
-  const personSchema = new mongooseClient.Schema({
-  
+  const person = new Schema({
     first: { type: String },
     last: { type: String },
     email: { type: String },
@@ -29,17 +28,24 @@ module.exports = function(app) {
     timestamps: true
   });
 
-  const orgSchema = new Schema({
+  const org = new Schema({
     text: { type: String, required: true }
   }, {
     timestamps: true
   });
 
-  const ouSchema = new Schema({
+  const ou = new Schema({
     text: { type: String, required: true }
   }, {
     timestamps: true
   });
 
-  return { personSchema, tagTypeSchema, tagSchema, orgSchema, ouSchema };
+  const artifact = new Schema({
+    text: { type: String, required: true }
+  }, {
+    timestamps: true
+  });
+
+  return { artifact, person, tagType, 
+    tag, org , ou };
 }
