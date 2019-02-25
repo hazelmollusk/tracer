@@ -1,10 +1,10 @@
 // Initializes the `person` service on path `/person`
 const createService = require('feathers-mongoose');
-const createModel = require('../../models/person.model');
+const tracer = require('../../models/tracer.models');
 const hooks = require('./person.hooks');
 
 module.exports = function (app) {
-  const Model = createModel(app);
+  const Model = tracer(app).person;
   const paginate = app.get('paginate');
 
   const options = {

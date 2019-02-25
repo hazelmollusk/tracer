@@ -1,10 +1,10 @@
-// Initializes the `tagType` service on path `/tag-type`
+// Initializes the `ou` service on path `/ou`
 const createService = require('feathers-mongoose');
-const tracer = require('../../models/tracer.models');
-const hooks = require('./tag-type.hooks');
+const createModel = require('../../models/ou.model');
+const hooks = require('./ou.hooks');
 
 module.exports = function (app) {
-  const Model = tracer(app).tagType;
+  const Model = createModel(app);
   const paginate = app.get('paginate');
 
   const options = {
@@ -13,10 +13,10 @@ module.exports = function (app) {
   };
 
   // Initialize our service with any options it requires
-  app.use('/tag-type', createService(options));
+  app.use('/ou', createService(options));
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('tag-type');
+  const service = app.service('ou');
 
   service.hooks(hooks);
 };

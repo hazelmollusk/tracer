@@ -5,19 +5,7 @@
 
 module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient');
-  const person = new mongooseClient.Schema({
-  
-    first: { type: String },
-    last: { type: String },
-    email: { type: String },
-    auth0Id: { type: String },
-    googleId: { type: String },
-    facebookId: { type: String },
-    githubId: { type: String },
-  
-  }, {
-    timestamps: true
-  });
+  const { person } = require('./tracer.schema')(app);
 
   return mongooseClient.model('person', person);
 };

@@ -1,10 +1,10 @@
 // Initializes the `tag` service on path `/tag`
 const createService = require('feathers-mongoose');
-const createModel = require('../../models/tag.model');
+const tracer = require('../../models/tracer.models');
 const hooks = require('./tag.hooks');
 
 module.exports = function (app) {
-  const Model = createModel(app);
+  const Model = tracer(app).tag;
   const paginate = app.get('paginate');
 
   const options = {
