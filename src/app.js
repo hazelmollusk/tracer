@@ -52,13 +52,6 @@ app.configure(services);
 // Set up event channels (see channels.js)
 app.configure(channels);
 
-// forestadmin
-app.use(require('forest-express-mongoose').init({
-    modelsDir: __dirname + '/models',
-    mongoose: require('mongoose'),
-  }));
-
-
 // Configure a middleware for 404s and the error handler
 app.use(express.notFound());
 app.use(express.errorHandler({ logger }));
