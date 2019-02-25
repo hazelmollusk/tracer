@@ -4,12 +4,7 @@
 // for more of what you can do here.
 module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient');
-  const { Schema } = mongooseClient;
-  const tag = new Schema({
-    text: { type: String, required: true }
-  }, {
-    timestamps: true
-  });
 
+  const { tag } = require('./tag.schema')(app);
   return mongooseClient.model('tag', tag);
 };
