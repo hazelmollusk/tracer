@@ -1,10 +1,10 @@
 // Initializes the `ou` service on path `/ou`
 const createService = require('feathers-mongoose');
-const createModel = require('../../models/ou.model');
+const tracer = require('../../models/tracer.models');
 const hooks = require('./ou.hooks');
 
 module.exports = function (app) {
-  const Model = createModel(app);
+  const Model = tracer(app).ou;
   const paginate = app.get('paginate');
 
   const options = {
