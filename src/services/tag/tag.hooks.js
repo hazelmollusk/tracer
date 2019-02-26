@@ -1,13 +1,29 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
+import { addVersion, clearVersions} from 'feathers-hooks';
+
+const add = addVersion({
+  excludeMask: ['id', 'qr'], 
+  });
+const clear = clearVersions();
+
+const timestamp = (isNew = false) => {
+  return async context => {
+		context.data.modifed = new Date();
+    if (isNew) {
+			context.data.created = context.data.modified;
+		}
+    return context;
+  };
+};
 
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
     find: [],
     get: [],
-    create: [],
-    update: [],
-    patch: [],
+    create: [ add, timestamp(true) ],
+    update: [ add, timestamp() ],
+    patch: [ add, timestamp() ],
     remove: []
   },
 
@@ -15,9 +31,9 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [],
-    update: [],
-    patch: [],
+    create: [ add ],
+    update: [ add ],
+    patch: [ add ],
     remove: []
   },
 
@@ -25,9 +41,9 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [],
-    update: [],
-    patch: [],
-    remove: []
+    create: [ add ],
+    update: [ add ],
+    patch: [ add ],
+    remove: [ clear ]
   }
 };

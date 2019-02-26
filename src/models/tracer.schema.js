@@ -10,7 +10,7 @@ module.exports = function(app) {
   });
   
   const tag = new Schema({
-    tagType: [ tagType ],
+    tagTypes: [ tagType ],
   }, {
     timestamps: true
   });
@@ -23,19 +23,19 @@ module.exports = function(app) {
     googleId: { type: String },
     facebookId: { type: String },
     githubId: { type: String },
-  
   }, {
     timestamps: true
   });
 
   const org = new Schema({
-    text: { type: String, required: true }
+    name: { type: String, required: true }
   }, {
     timestamps: true
   });
 
   const ou = new Schema({
-    text: { type: String, required: true }
+    name: { type: String, required: true },
+    children: [ { type: ObjectID, ref: 'ou'} ]
   }, {
     timestamps: true
   });
